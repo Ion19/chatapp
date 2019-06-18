@@ -16,7 +16,7 @@ class Chat extends React.Component {
       
       <Media className="mb-4" tag="li">
       <Media left top href="#">
-        <Media object data-src="holder.js/64x64" alt="Generic" />
+        <Media object data-src="holder.js/64x64" alt="userImage" className="rounded-circle" />
       </Media>
       <Media body>
         <Media heading>
@@ -34,7 +34,7 @@ class Chat extends React.Component {
         <span>{message.msg}</span>  
       </Media>
       <Media right bottom  href="#">
-        <Media object  data-src="holder.js/64x64" alt="Generic" />
+        <Media object  data-src="holder.js/64x64" alt="imageUser" className="rounded-circle" />
       </Media>
     </Media>)
       

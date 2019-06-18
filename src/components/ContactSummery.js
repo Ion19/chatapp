@@ -20,12 +20,12 @@ class ContactSummery extends React.Component {
           
         {this.props.usersList.map((user)=>( <Card>
             <CardBody onClick={() => this.props.activateUser(user)}>
-            <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />  
+            <CardImg top width="100%" className="rounded-circle" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="contactImage" />  
               <CardTitle>{user.firstName} {user.lastName}</CardTitle>
               <CardSubtitle>
-                <small className="text-muted">Last updated 3 mins ago</small>
+                <small className="text-muted">{(user.messages[0])?(user.messages[0].date):(<h5>--</h5>)}</small>
               </CardSubtitle>
-              <CardText>Some quick example text to build.</CardText>
+              <CardText>{(user.messages[0])?(user.messages[0].msg):(<h5>Start chat now</h5>)}</CardText>
               <Button>Chat</Button>
             </CardBody>
           </Card>)) }

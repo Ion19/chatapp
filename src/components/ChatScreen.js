@@ -16,7 +16,7 @@ const ChatScreen = () => {
           </Media>
         </div>
     
-        <div className="h-25 block" style={{height:"100%"}} >     
+        <div className="h-25 block" style={{height:"100%" , position: 'fixed',bottom:'75px'}} >     
             <MessageBox/> 
         </div>
         

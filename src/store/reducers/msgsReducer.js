@@ -36,7 +36,7 @@ const msgsReducer = (state=initState , action) =>{
         case MESSAGE_SENT:
             return {
         ...state , 
-        users:state.users.map((user)=>user.userId===action.payload.to   ?  {...user , messages:[...user.messages , action.payload]}  : {...user ,messages:[...user.messages]} ), 
+        users:state.users.map((user)=>user.userId===action.payload.to   ?  {...user , messages:[action.payload , ...user.messages ]}  : {...user ,messages:[...user.messages]} ), 
         activeUser:{...state.activeUser , messages:[...state.activeUser.messages , action.payload]} 
         
         
