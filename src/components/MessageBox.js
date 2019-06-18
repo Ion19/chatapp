@@ -35,6 +35,10 @@ class MessageBox extends Component {
       
     });
     this.props.sendMessage(this.state);
+    this.setState({
+      msg:''
+      
+    });
     
   }
 
@@ -54,7 +58,7 @@ class MessageBox extends Component {
                 <Form onSubmit={this.handleSubmit}>
 
                     <div class="form-group">    
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="msg" onChange={this.handleChange}></textarea>
+                    <textarea className="form-control" value={this.state.msg} id="exampleFormControlTextarea1" rows="3" name="msg" onChange={this.handleChange}></textarea>
                     </div>
 
                     <FormGroup>

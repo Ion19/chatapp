@@ -25,8 +25,8 @@ class ContactSummery extends React.Component {
               <CardSubtitle>
                 <small className="text-muted">{(user.messages[0])?(user.messages[0].date):(<h5>--</h5>)}</small>
               </CardSubtitle>
-              <CardText>{(user.messages[0])?(user.messages[0].msg):(<h5>Start chat now</h5>)}</CardText>
-              <Button>Chat</Button>
+              <CardText>{(user.messages[0])?(user.messages[0].msg):(<h5>Click to start chat now</h5>)}</CardText>
+              
             </CardBody>
           </Card>)) }
           
