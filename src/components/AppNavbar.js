@@ -11,6 +11,7 @@ import {
     Container
     } from 'reactstrap';
     import CreateContact from './CreateContact';
+import AllContacts from './AllContacts';
 
 class AppNavbar extends Component {  
     state = {
@@ -35,7 +36,10 @@ class AppNavbar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink><CreateContact/></NavLink>
+                <NavLink><AllContacts/></NavLink>
+              </NavItem>
+              <NavItem>
+              <NavLink><CreateContact/></NavLink>
               </NavItem>
              
             </Nav>
