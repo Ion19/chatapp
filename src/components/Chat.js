@@ -8,7 +8,7 @@ class Chat extends React.Component {
   render(){
   
   return (
-    <div> 
+    <div style={{minHeight:"250px"}}> 
       
       {this.props.activeUserMessages && this.props.activeUserMessages.map((message)=>(  
       
