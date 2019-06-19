@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle ,Button } from 'reactstrap';
+  CardTitle, CardSubtitle } from 'reactstrap';
   import {connect} from 'react-redux'; 
   import { activateUserAction } from './../store/actions/actions';
 
@@ -19,7 +19,8 @@ class ContactSummery extends React.Component {
         <Card>
           
         {this.props.usersList.map((user)=>( <Card>
-            <CardBody onClick={() => this.props.activateUser(user)}>
+         
+            <CardBody className={`${user.active ? "active" : ""}`}  onClick={() => this.props.activateUser(user)}>
             <CardImg top width="100%" className="rounded-circle" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="contactImage" />  
               <CardTitle>{user.firstName} {user.lastName}</CardTitle>
               <CardSubtitle>
@@ -28,6 +29,7 @@ class ContactSummery extends React.Component {
               <CardText>{(user.messages[0])?(user.messages[0].msg):(<h5>Click to start chat now</h5>)}</CardText>
               
             </CardBody>
+            
           </Card>)) }
           
           

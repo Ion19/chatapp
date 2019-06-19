@@ -16,7 +16,8 @@ class CreateContact extends React.Component {
       phoneNumber:'',
       userId:uuid(),
       messages:[], 
-      active:false
+      active:false, 
+      image:''
       
     };
 

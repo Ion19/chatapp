@@ -75,7 +75,7 @@ class MessageBox extends Component {
               </CardText>
             </CardBody>
         </Card>
-        ):(<h4>select a user</h4>) }
+        ):(<div style={{minHeight:"300px"}}><h4>select a user</h4></div>) }
       </div>
     )
   }
