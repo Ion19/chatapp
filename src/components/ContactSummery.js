@@ -3,16 +3,39 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, InputGroupAddon ,Input ,InputGroup } from 'reactstrap';
   import {connect} from 'react-redux'; 
   import { activateUserAction } from './../store/actions/actions';
+  import EscapeRegExp from 'escape-string-regexp';
 
 
 
 class ContactSummery extends React.Component {
 
-  // handleSelectUser = (user)=>{
-  //   console.log(user)
-  // }
-  
+  state = {
+    querry:""
+  }
+
+
+  handleChange =(e)=>{
+    this.setState({
+      querry:(e.target.value)
+    })
+    
+  };
+
   render(){
+    const { usersList } = this.props;
+          let list = usersList    
+        
+
+        let showingList ; 
+
+        if(this.state.querry){
+            const match = new RegExp(EscapeRegExp(this.state.querry),'i');
+
+            showingList=list.filter((user)=>(match.test(user.firstName)||match.test(user.lastName) ));
+        }
+        else {
+            showingList=list;
+        }
   return (
     <div>
       
@@ -20,10 +43,10 @@ class ContactSummery extends React.Component {
         <div>
           <InputGroup>
             <InputGroupAddon addonType="prepend">find</InputGroupAddon>
-            <Input placeholder="Seach Contact" />
+            <Input placeholder="Seach Contact" onChange={this.handleChange} />
           </InputGroup>
          </div>  
-        {this.props.usersList.map((user)=>( 
+        {showingList.map((user)=>( 
         ((user.messages[0]) ? (<Card>
         
           <CardBody className={`${user.active ? "active" : ""}`}  onClick={() => this.props.activateUser(user)}>

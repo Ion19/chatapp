@@ -2,10 +2,11 @@
 
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter ,Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle } from 'reactstrap';
+    CardTitle, CardSubtitle , InputGroup, InputGroupAddon , Input} from 'reactstrap';
 import {connect} from 'react-redux'; 
 import { activateUserAction } from './../store/actions/actions';
 import CreateContact from './CreateContact';
+import EscapeRegExp from 'escape-string-regexp';
 
 
 class AllContacts extends React.Component {
@@ -13,6 +14,7 @@ class AllContacts extends React.Component {
     state = {
       modal: false, 
       nestedModal: false,
+      querry:""
       
       
     };
@@ -24,7 +26,13 @@ class AllContacts extends React.Component {
         });
       }
     
-    
+
+    handleChange =(e)=>{
+        this.setState({
+          querry:(e.target.value)
+        })
+        
+      };
  
 
   
@@ -36,6 +44,20 @@ class AllContacts extends React.Component {
   }
 
   render() {
+    const { usersList } = this.props;
+          let list = usersList    
+        
+
+        let showingList ; 
+
+        if(this.state.querry){
+            const match = new RegExp(EscapeRegExp(this.state.querry),'i');
+
+            showingList=list.filter((user)=>(match.test(user.firstName)||match.test(user.lastName) ));
+        }
+        else {
+            showingList=list;
+        }
     return (
       <div>
         <Button  onClick={this.toggle}>{this.props.buttonLabel}Contacts</Button>
@@ -44,8 +66,16 @@ class AllContacts extends React.Component {
           
           <ModalBody>
           <Card>
+          <div>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">find</InputGroupAddon>
+            <Input placeholder="Seach Contact" onChange={this.handleChange} />
+          </InputGroup>
+         </div>  
+         <br/>
+         
           
-          {this.props.usersList.map((user)=>( <Card>
+          {showingList.map((user)=>( <Card>
            
               <CardBody className={`${user.active ? "active" : ""}`} >
               <CardImg top width="100%" className="rounded-circle" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="contactImage" />  
