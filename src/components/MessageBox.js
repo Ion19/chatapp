@@ -18,7 +18,7 @@ class MessageBox extends Component {
 
     handleChange = (e)=>{
       this.setState({[e.target.name]:(e.target.value)}); 
-      console.log(e.target.value)
+      console.log(this.state)
     };
     
      
@@ -33,16 +33,21 @@ class MessageBox extends Component {
       send:true,
       to:(this.props.activeUser.userId)
       
-    });
-    this.props.sendMessage(this.state);
-    this.setState({
-      msg:''
-      
-    });
+    },
+    () => {
+      this.props.sendMessage((this.state)); 
+      this.setState({msg:''})
+    }); 
     
   }
 
+  
+
+      
+  
+
   render() {
+    
    
     
     return (
@@ -82,7 +87,7 @@ class MessageBox extends Component {
 }
 
 
-const mapStateToProps =(state) =>{
+const mapStateToProps = (state) =>{
   return {
     users : state.msgs.users, 
     activeUser:state.msgs.activeUser
